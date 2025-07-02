@@ -59,6 +59,7 @@ is a bad idea unless you have a few centuries to waste. You must come up with so
 (c) Это задание представляет собой лирическую версию задачи 18 и/или задачи 67 из ProjectEuler.
 */
 
+const pyramid = [[3], [7, 4], [2, 4, 6], [8, 5, 9, 3]]; // Example input
 function longestSlideDown(pyramid) {
       // Start from the second last row and move upwards
     for (let i = pyramid.length - 2; i >= 0; i--) {
@@ -68,4 +69,6 @@ function longestSlideDown(pyramid) {
         }
     }
     return pyramid[0][0];
-}
+};
+
+console.log(longestSlideDown(pyramid)); // Output: 23
