@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha \"JS/Integer complexity - 5 kuy/*.test.js\""
-
   },
   "repository": {
     "type": "git",
@@ -21,5 +20,8 @@
   "devDependencies": {
     "chai": "^5.2.0",
     "mocha": "^11.7.1"
+  },
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^6.3.3"
   }
 }
