@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Правильный многоугольник</title>
+  <style>
+    canvas {
+      background: #f0f0f0;
+      display: block;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="400" height="400"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
+    const R = 100; // радиус окружности
+    const n = 6;    // количество сторон (правильный шестиугольник)
+
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const angle = (2 * Math.PI * i) / n - Math.PI / 2;
+      const x = centerX + R * Math.cos(angle);
+      const y = centerY + R * Math.sin(angle);
+      if (i === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+    ctx.closePath();
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Нарисуем окружность
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, R, 0, 2 * Math.PI);
+    ctx.strokeStyle = "gray";
+    ctx.stroke();
+  </script>
+</body>
+</html>
