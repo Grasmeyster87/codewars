@@ -24,26 +24,26 @@ Note: This is an introductory Kata for a series... coming soon!
 Примечание: Это вводная ката для ряда... скоро!
 */
 
-let arr = [45, 120];
 
 function reduce(fraction) {
-    let res = [];
-    for(let i=0; i < fraction; i++){
-        if (fraction[i] % 2 == 0){
-            res[i] = true;
-            //res[i] = fraction[i] / 2;
-        }
-        if (fraction[i] % 5 == 0){
-            res[i] = true;
-            res[i] = fraction[i] / 5;
-        }
+  const [numerator, denominator] = fraction;
+
+  // Допоміжна функція для знаходження НСД (найбільшого спільного дільника)
+  function gcd(a, b) {
+    while (b !== 0) {
+      [a, b] = [b, a % b];
     }
-    return res;
+    return a;
+  }
+
+  const divisor = gcd(numerator, denominator);
+  return [numerator / divisor, denominator / divisor];
 }
 
+// Приклад використання
+let arr = [45, 120];
 let res = reduce(arr);
-
-console.log(res);
+console.log(res); // Виведе: [3, 8]
 
 
 /* test
