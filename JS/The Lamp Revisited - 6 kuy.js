@@ -21,15 +21,21 @@ color и присвойте on значение false при инициализ�
 если она включена, и «Лампа выключена» в противном случае.
 */
 class Lamp {
-    constructor (color, on){
+    constructor(color) {
         this.color = color;
-        this.on = on = false;
+        this.on = false;
     }
-    toggleSwitch (){
-        this.on = true;
+
+    toggleSwitch() {
+        this.on = !this.on;
     }
-    state (){
-        return `The lamp is on.`
+
+    state() {
+        if (this.on) {
+            return "The lamp is on.";
+        } else {
+            return "The lamp is off.";
+        }
     }
 }
 
