@@ -4,7 +4,7 @@
   "description": "My Codewar git repozitoriy",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"JS/Land perimeter - 5 kuy/*.test.js\""
+    "test": "mocha \"JS/Duplicate Arguments/*.test.js\""
   },
   "repository": {
     "type": "git",
