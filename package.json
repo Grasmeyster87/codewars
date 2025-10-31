@@ -4,7 +4,8 @@
   "description": "My Codewar git repozitoriy",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"JS/Duplicate Arguments/*.test.js\""
+    "test": "mocha \"JS/field-chained-html-formatting-5-kuy/*.test.js\"",
+    "test:dir": "mocha \"$@/**/*.test.js\""
   },
   "repository": {
     "type": "git",
