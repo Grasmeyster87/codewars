@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const stringParse = require('./Bracket Duplicates - 6 kuy');
+const numberToOrdinal = require('./Adding ordinal indicator suffixes to numbers - 6 kuy');
 
 describe("Tests", () => {
   it("test", () => {
