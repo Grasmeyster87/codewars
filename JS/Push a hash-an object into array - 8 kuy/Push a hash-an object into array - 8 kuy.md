@@ -1,0 +1,2 @@
+<p>You are trying to put a hash in ruby or an object in javascript or java into an array, but it always returns error, solve it and keep it as simple as possible!</p>
+<p>Вы пытаетесь поместить хеш в Ruby или объект в JavaScript или Java в массив, но постоянно получаете ошибку. Решите эту проблему и постарайтесь сделать всё как можно проще!</p>
