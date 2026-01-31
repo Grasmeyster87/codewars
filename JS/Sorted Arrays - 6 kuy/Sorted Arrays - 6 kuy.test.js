@@ -1,15 +1,17 @@
-const strictEqual = require('chai').assert.strictEqual;
-const nthSmallest = require('./Sorted Arrays - 6 kuy');
 
-function doTest(arrays, n, expected) {
+(async () => {
+  const { strictEqual } = await import('chai');
+  const nthSmallest = require('./Sorted Arrays - 6 kuy');
+
+  function doTest(arrays, n, expected) {
     const log = `for arguments:\n${arrays.map((array) => JSON.stringify(array)).join(', ')}, ${n}\n`;
     const actual = nthSmallest(...arrays, n);
     strictEqual(actual, expected, log);
-}
+  }
 
-describe('standard tests', function () {
+  describe('standard tests', function () {
     it('should work with one array', function () {
-        doTest([[2, 4, 6, 8, 10, 12]], 5, 10);
+      doTest([[2, 4, 6, 8, 10, 12]], 5, 10);
     });
     it('should work with one array containing repeating numbers', function () {
         doTest([[2, 2, 2, 2, 2]], 3, 2);
@@ -30,4 +32,5 @@ describe('standard tests', function () {
     it('should work with a bunch of arrays', function () {
         doTest([[1], [2], [3], [4], [5, 6, 7, 8], [9], [10]], 7, 7);
     });
-});
+  });
+})();
