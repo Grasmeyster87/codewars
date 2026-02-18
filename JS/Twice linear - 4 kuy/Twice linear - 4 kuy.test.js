@@ -2,7 +2,7 @@ const {assert} = require("chai");
 const dblLinear = require('./Twice linear - 4 kuy');
 
 function testing(actual, expected) {
-	Test.assertEquals(actual, expected)
+	assert.equal(actual, expected)
 }
 
 describe("dblLinear",function() {
