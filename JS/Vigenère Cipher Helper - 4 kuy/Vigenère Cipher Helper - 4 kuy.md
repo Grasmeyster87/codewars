@@ -15,9 +15,10 @@
 <pre><code class="language-javascript"><span class="cm-variable">alphabet</span> <span class="cm-operator">=</span> <span class="cm-string">"abcdefghijklmnopqrstuvwxyz"</span>
 <span class="cm-variable">key</span>      <span class="cm-operator">=</span> <span class="cm-string">"password"</span>
 
-<span class="cm-string">"codewars"</span> <span class="cm-operator">--&gt;</span> <span class="cm-variable">encode</span> <span class="cm-operator">--&gt;</span>  <span class="cm-string">"rovwsoiv"</span>
-<span class="cm-string">"laxxhsj"</span>  <span class="cm-operator">--&gt;</span> <span class="cm-variable">decode</span> <span class="cm-operator">--&gt;</span>  <span class="cm-string">"waffles"</span>
+<span class="cm-string">"codewars"</span> <span class="cm-operator">--&gt;</span> <span class="cm-variable">encode</span> <span class="cm-operator">--&gt;</span> <span class="cm-string">"rovwsoiv"</span>
+<span class="cm-string">"laxxhsj"</span> <span class="cm-operator">--&gt;</span> <span class="cm-variable">decode</span> <span class="cm-operator">--&gt;</span> <span class="cm-string">"waffles"</span>
 </code></pre>
+
 <p><strong>Note</strong>: any character not in the alphabet must be left alone. For example in the above case:</p>
 <pre><code class="language-javascript"><span class="cm-string">"CODEWARS"</span>  <span class="cm-operator">--&gt;</span> <span class="cm-variable">encode</span> <span class="cm-operator">--&gt;</span>  <span class="cm-string">"CODEWARS"</span>
 </code></pre>
@@ -44,7 +45,27 @@
 <span class="cm-string">"codewars"</span> <span class="cm-operator">--&gt;</span> <span class="cm-variable">encode</span> <span class="cm-operator">--&gt;</span> <span class="cm-string">"rovwsoiv"</span>
 <span class="cm-string">"laxxhsj"</span> <span class="cm-operator">--&gt;</span> <span class="cm-variable">decode</span> <span class="cm-operator">--&gt;</span> <span class="cm-string">"waffles"</span>
 </code></pre>
+
 <p><strong>Примечание</strong>: любой символ, не входящий в алфавит, должен оставаться неизменным. Например, в приведенном выше случае:</p>
 <pre><code class="language-javascript"><span class="cm-string">"CODEWARS"</span> <span class="cm-operator">--&gt;</span> <span class="cm-variable">encode</span> <span class="cm-operator">--&gt;</span> <span class="cm-string">"CODEWARS"</span>
 </code></pre>
 </div>
+
+Як це працює
+
+    Повторення ключа: Ми використовуємо оператор остачі від ділення % (i % this.key.length), щоб циклічно перебирати символи ключа для кожного індексу вхідного повідомлення.
+
+    Обробка символів:
+
+        Якщо символ повідомлення присутній в алфавіті, ми обчислюємо його нову позицію шляхом зсуву на індекс відповідного символу ключа.
+
+        Математично це виглядає так:
+
+            Кодування: indexnew​=(indexmsg​+indexkey​)(modL)
+
+            Декодування: indexnew​=(indexmsg​−indexkey​+L)(modL)
+            (де L — довжина алфавіту).
+
+    Ігнорування невідомих символів: Якщо indexOf повертає -1 (символу немає в заданому алфавіті), ми просто додаємо цей символ до результату в оригінальному вигляді.
+
+Чи хотіли б ви, щоб я написав додаткові тести для перевірки роботи з UTF-8 символами або іншими мовами?
