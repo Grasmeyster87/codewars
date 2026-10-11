@@ -1,0 +1,159 @@
+<div class="markdown prose max-w-none mb-8" id="description"><h2 id="write-a-generic-function-chainer">Write a generic function chainer</h2>
+<p>Write a generic function chainer that takes a starting value, and an array of functions to execute on it (array of symbols for Ruby).</p>
+<p>The input for each function is the output of the previous function (except the first function, which takes the starting value as its input). Return the final value after execution is complete.</p>
+<pre><code class="language-javascript"><span class="cm-keyword">function</span> <span class="cm-def">add</span>(<span class="cm-def">num</span>) {
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">num</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>;
+}
+
+<span class="cm-keyword">function</span> <span class="cm-def">mult</span>(<span class="cm-def">num</span>) {
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">num</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>;
+}
+
+<span class="cm-variable">chain</span>(<span class="cm-number">2</span>, [<span class="cm-variable">add</span>, <span class="cm-variable">mult</span>]);
+<span class="cm-comment">// returns 90;</span>
+</code></pre>
+<pre style="display: none;"><code class="language-haskell"><span class="cm-variable">add</span> <span class="cm-keyword">=</span> (<span class="cm-builtin">+</span> <span class="cm-number">1</span>)
+<span class="cm-variable">mul</span> <span class="cm-keyword">=</span> (<span class="cm-builtin">*</span> <span class="cm-number">30</span>)
+
+<span class="cm-variable">chain</span> <span class="cm-number">2</span> [<span class="cm-variable">add</span>, <span class="cm-variable">mult</span>] <span class="cm-keyword">-&gt;</span> <span class="cm-number">90</span>
+</code></pre>
+<pre style="display: none;"><code class="language-ruby"><span class="cm-keyword">def</span> <span class="cm-def">add</span> <span class="cm-variable">num</span>
+  <span class="cm-variable">num</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>
+<span class="cm-keyword">end</span>
+
+<span class="cm-keyword">def</span> <span class="cm-def">mult</span> <span class="cm-variable">num</span>
+  <span class="cm-variable">num</span> <span class="cm-operator">*</span> <span class="cm-number">30</span> 
+<span class="cm-keyword">end</span>
+
+<span class="cm-variable">chain</span>(<span class="cm-number">2</span>, [<span class="cm-atom">:add</span>, <span class="cm-atom">:mult</span>])
+<span class="cm-comment">#=&gt; returns 90</span>
+</code></pre>
+<pre style="display: none;"><code class="language-csharp"><span class="cm-type">double</span> <span class="cm-variable">input</span> <span class="cm-operator">=</span> <span class="cm-number">2</span>;
+
+<span class="cm-keyword">public</span> <span class="cm-keyword">static</span> <span class="cm-type">double</span> <span class="cm-keyword">add</span>(<span class="cm-type">double</span> <span class="cm-variable">x</span>) {
+  <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>;
+}
+
+<span class="cm-keyword">public</span> <span class="cm-keyword">static</span> <span class="cm-type">double</span> <span class="cm-def">mul</span>(<span class="cm-type">double</span> <span class="cm-variable">x</span>) {
+   <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>;
+}
+<span class="cm-variable">Kata</span>.<span class="cm-variable">Chain</span>( <span class="cm-variable">input</span> , <span class="cm-keyword">new</span>[] { (<span class="cm-type">Func</span><span class="cm-operator">&lt;</span><span class="cm-type">double</span>, <span class="cm-type">double</span><span class="cm-operator">&gt;</span>)<span class="cm-keyword">add</span>, <span class="cm-variable">mul</span> });
+<span class="cm-comment">//=&gt; returns 90</span>
+</code></pre>
+<pre style="display: none;"><code class="language-c"><span class="cm-type">int</span> <span class="cm-def">add10</span> (<span class="cm-type">int</span> <span class="cm-variable">x</span>) { <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">10</span>; }
+<span class="cm-type">int</span> <span class="cm-def">mul30</span> (<span class="cm-type">int</span> <span class="cm-variable">x</span>) { <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>; }
+
+<span class="cm-keyword">typedef</span> <span class="cm-type">int</span> (<span class="cm-operator">*</span><span class="cm-variable">funcptr</span>) (<span class="cm-type">int</span>);
+
+<span class="cm-variable">chain</span>(<span class="cm-number">50</span>, <span class="cm-number">2</span>, (<span class="cm-variable">funcptr</span>[<span class="cm-number">2</span>]) {<span class="cm-variable">add10</span>, <span class="cm-variable">mul30</span>});
+<span class="cm-comment">// returns 1800</span>
+</code></pre>
+<pre style="display: none;"><code class="language-python"><span class="cm-keyword">def</span> <span class="cm-def">add10</span>(<span class="cm-variable">x</span>): <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">10</span>
+<span class="cm-keyword">def</span> <span class="cm-def">mul30</span>(<span class="cm-variable">x</span>): <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>
+
+<span class="cm-variable">chain</span>(<span class="cm-number">50</span>, [<span class="cm-variable">add10</span>, <span class="cm-variable">mul30</span>])
+<span class="cm-comment"># returns 1800</span>
+</code></pre>
+<pre style="display: none;"><code class="language-factor"><span class="cm-keyword">:</span> <span class="cm-def">add10</span> <span class="cm-bracket">(</span> <span class="cm-meta">x</span> <span class="cm-bracket">--</span> <span class="cm-meta">r</span> <span class="cm-bracket">)</span> <span class="cm-number">10</span> <span class="cm-keyword">+</span> <span class="cm-keyword">;</span>
+<span class="cm-keyword">:</span> <span class="cm-def">mul30</span> <span class="cm-bracket">(</span> <span class="cm-meta">x</span> <span class="cm-bracket">--</span> <span class="cm-meta">r</span> <span class="cm-bracket">)</span> <span class="cm-number">30</span> <span class="cm-keyword">*</span> <span class="cm-keyword">;</span>
+
+<span class="cm-number">50</span> <span class="cm-keyword">{</span> <span class="cm-keyword">[</span> <span class="cm-variable">add10</span> <span class="cm-keyword">]</span> <span class="cm-keyword">[</span> <span class="cm-variable">mul30</span> <span class="cm-keyword">]</span> <span class="cm-keyword">}</span> <span class="cm-variable">chain</span>
+<span class="cm-comment">! returns 1800</span>
+</code></pre>
+<pre style="display: none;"><code class="language-ocaml"><span class="cm-keyword">let</span> <span class="cm-variable">add</span> <span class="cm-variable">n</span> <span class="cm-operator">=</span> <span class="cm-variable">n</span> <span class="cm-operator">+</span> <span class="cm-number">1</span> <span class="cm-keyword">in</span>
+<span class="cm-keyword">let</span> <span class="cm-variable">mult</span> <span class="cm-variable">n</span> <span class="cm-operator">=</span> <span class="cm-variable">n</span> <span class="cm-operator">*</span> <span class="cm-number">30</span> <span class="cm-keyword">in</span>
+
+<span class="cm-variable">chain</span> <span class="cm-number">2</span> [<span class="cm-variable">add</span>; <span class="cm-variable">mult</span>] <span class="cm-comment">(* -&gt; 90 *)</span>
+</code></pre>
+<pre style="display: none;"><code class="language-prolog"><span class="cm-atom">add</span><span class="cm-paren">(</span><span class="cm-variable">X</span><span class="cm-paren">,</span><span class="cm-variable">R</span><span class="cm-paren">)</span><span class="cm-graphic">:-</span><span class="cm-variable">R</span><span class="cm-comment"> </span><span class="cm-atom">is</span><span class="cm-comment"> </span><span class="cm-variable">X</span><span class="cm-graphic">+</span><span class="cm-number">1</span><span class="cm-graphic">.</span>
+<span class="cm-atom">mul</span><span class="cm-paren">(</span><span class="cm-variable">X</span><span class="cm-paren">,</span><span class="cm-variable">R</span><span class="cm-paren">)</span><span class="cm-graphic">:-</span><span class="cm-variable">R</span><span class="cm-comment"> </span><span class="cm-atom">is</span><span class="cm-comment"> </span><span class="cm-variable">X</span><span class="cm-graphic">*</span><span class="cm-number">30</span><span class="cm-graphic">.</span>
+
+<span class="cm-graphic">?-</span><span class="cm-comment"> </span><span class="cm-atom">chain</span><span class="cm-paren">(</span><span class="cm-number">2</span><span class="cm-paren">,</span>[<span class="cm-atom">add</span><span class="cm-paren">,</span><span class="cm-atom">mul</span>]<span class="cm-paren">,</span><span class="cm-variable">Result</span><span class="cm-paren">)</span><span class="cm-graphic">.</span><span class="cm-comment"> % Result = 90.</span>
+</code></pre>
+<pre style="display: none;"><code class="language-rust"><span class="cm-keyword">fn</span> <span class="cm-def">add10</span>(<span class="cm-variable">x</span>) { <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">10</span> }
+<span class="cm-keyword">fn</span> <span class="cm-def">mul30</span>(<span class="cm-variable">x</span>) { <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span> }
+
+<span class="cm-variable">chain</span>(<span class="cm-number">50</span>, &amp;[&amp;<span class="cm-variable">add10</span>, &amp;<span class="cm-variable">mul30</span>]) <span class="cm-comment">//=&gt; returns 1800</span>
+</code></pre>
+</div>
+
+
+
+
+<div class="markdown prose max-w-none mb-8" id="description"><h2 id="write-a-generic-function-chainer">Напишите универсальный механизм для цепочки функций</h2>
+<p>Напишите универсальную функцию для создания цепочки вызовов, которая принимает начальное значение и массив функций (или массив символов в случае Ruby) для их последовательного выполнения.</p>
+<p>Входным аргументом для каждой функции служит результат выполнения предыдущей функции (за исключением первой, которая принимает начальное значение). Верните итоговое значение после завершения выполнения всей цепочки.</p>
+<pre><code class="language-javascript"><span class="cm-keyword">function</span> <span class="cm-def">add</span>(<span class="cm-def">num</span>) {
+<span class="cm-keyword">return</span> <span class="cm-variable-2">num</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>;
+}
+
+<span class="cm-keyword">function</span> <span class="cm-def">mult</span>(<span class="cm-def">num</span>) {
+<span class="cm-keyword">return</span> <span class="cm-variable-2">num</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>;
+}
+
+<span class="cm-variable">chain</span>(<span class="cm-number">2</span>, [<span class="cm-variable">add</span>, <span class="cm-variable">mult</span>]);
+<span class="cm-comment">// возвращает 90;</span>
+</code></pre>
+<pre style="display: none;"><code class="language-haskell"><span class="cm-variable">add</span> <span class="cm-keyword">=</span> (<span class="cm-builtin">+</span> <span class="cm-number">1</span>)
+<span class="cm-variable">mul</span> <span class="cm-keyword">=</span> (<span class="cm-builtin">*</span> <span class="cm-number">30</span>)
+
+<span class="cm-variable">chain</span> <span class="cm-number">2</span> [<span class="cm-variable">add</span>, <span class="cm-variable">mult</span>] <span class="cm-keyword">-&gt;</span> <span class="cm-number">90</span>
+</code></pre>
+<pre style="display: none;"><code class="language-ruby"><span class="cm-keyword">def</span> <span class="cm-def">add</span> <span class="cm-variable">num</span>
+<span class="cm-variable">num</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>
+<span class="cm-keyword">end</span>
+
+<span class="cm-keyword">def</span> <span class="cm-def">mult</span> <span class="cm-variable">num</span>
+<span class="cm-variable">num</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>
+<span class="cm-keyword">end</span>
+
+<span class="cm-variable">chain</span>(<span class="cm-number">2</span>, [<span class="cm-atom">:add</span>, <span class="cm-atom">:mult</span>])
+<span class="cm-comment">#=&gt; возвращает 90</span>
+</code></pre>
+<pre style="display: none;"><code class="language-csharp"><span class="cm-type">double</span> <span class="cm-variable">input</span> <span class="cm-operator">=</span> <span class="cm-number">2</span>;
+
+<span class="cm-keyword">public</span> <span class="cm-keyword">static</span> <span class="cm-type">double</span> <span class="cm-keyword">add</span>(<span class="cm-type">double</span> <span class="cm-variable">x</span>) {
+<span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">1</span>;
+}
+
+<span class="cm-keyword">public</span> <span class="cm-keyword">static</span> <span class="cm-type">double</span> <span class="cm-def">mul</span>(<span class="cm-type">double</span> <span class="cm-variable">x</span>) {
+<span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>;
+}
+<span class="cm-variable">Kata</span>.<span class="cm-variable">Chain</span>( <span class="cm-variable">input</span> , <span class="cm-keyword">new</span>[] { (<span class="cm-type">Func</span><span class="cm-operator">&lt;</span><span class="cm-type">double</span>, <span class="cm-type">double</span><span class="cm-operator">&gt;</span>)<span class="cm-keyword">add</span>, <span class="cm-variable">mul</span> });
+<span class="cm-comment">//=&gt; возвращает 90</span>
+</code></pre>
+<pre style="display: none;"><code class="language-c"><span class="cm-type">int</span> <span class="cm-def">add10</span> (<span class="cm-type">int</span> <span class="cm-variable">x</span>) { <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">10</span>; }
+<span class="cm-type">int</span> <span class="cm-def">mul30</span> (<span class="cm-type">int</span> <span class="cm-variable">x</span>) { <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>; }
+
+<span class="cm-keyword">typedef</span> <span class="cm-type">int</span> (<span class="cm-operator">*</span><span class="cm-variable">funcptr</span>) (<span class="cm-type">int</span>);
+
+<span class="cm-variable">chain</span>(<span class="cm-number">50</span>, <span class="cm-number">2</span>, (<span class="cm-variable">funcptr</span>[<span class="cm-number">2</span>]) {<span class="cm-variable">add10</span>, <span class="cm-variable">mul30</span>});
+<span class="cm-comment">// возвращает 1800</span>
+</code></pre>
+<pre style="display: none;"><code class="language-python"><span class="cm-keyword">def</span> <span class="cm-def">add10</span>(<span class="cm-variable">x</span>): <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">10</span>
+<span class="cm-keyword">def</span> <span class="cm-def">mul30</span>(<span class="cm-variable">x</span>): <span class="cm-keyword">return</span> <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span>
+
+<span class="cm-variable">chain</span>(<span class="cm-number">50</span>, [<span class="cm-variable">add10</span>, <span class="cm-variable">mul30</span>])
+<span class="cm-comment"># возвращает 1800</span>
+</code></pre>
+<pre style="display: none;"><code class="language-factor"><span class="cm-keyword">:</span> <span class="cm-def">add10</span> <span class="cm-bracket">(</span> <span class="cm-meta">x</span> <span class="cm-bracket">--</span> <span class="cm-meta">r</span> <span class="cm-bracket">)</span> <span class="cm-number">10</span> <span class="cm-keyword">+</span> <span class="cm-keyword">;</span>
+<span class="cm-keyword">:</span> <span class="cm-def">mul30</span> <span class="cm-bracket">(</span> <span class="cm-meta">x</span> <span class="cm-bracket">--</span> <span class="cm-meta">r</span> <span ) 30 * ;
+
+50 { [ add10 ] [ mul30 ] } chain
+! возвращает 1800
+</code>
+
+<pre style="display: none;"><code class="language-ocaml">let add n = n + 1 in
+let mult n = n * 30 in
+
+chain 2 [add; <span class="cm-variable">mult</span>] <span class="cm-comment">(* -&gt; 90 *)</span>
+</code></pre>
+<pre style="display: none;"><code class="language-prolog"><span class="cm-atom">add</span><span class="cm-paren">(</span><span class="cm-variable">X</span><span class="cm-paren">,</span><span class="cm-variable">R</span><span class="cm-paren">)</span><span class="cm-graphic">:-</span><span class="cm-variable">R</span><span class="cm-comment"> </span><span class="cm-atom">is</span><span class="cm-comment"> </span><span class="cm-variable">X</span><span class="cm-graphic">+</span><span class="cm-number">1</span><span class="cm-graphic">.</span>
+<span class="cm-atom">mul</span><span class="cm-paren">(</span><span class="cm-variable">X</span><span class="cm-paren">,</span><span class="cm-variable">R</span><span class="cm-paren">)</span><span class="cm-graphic">:-</span><span class="cm-variable">R</span><span class="cm-comment"> </span><span class="cm-atom">is</span><span class="cm-comment"> </span><span class="cm-variable">X</span><span class="cm-graphic">*</span><span class="cm-number">30</span><span class="cm-graphic">.</span>
+
+<span class="cm-graphic">?-</span><span class="cm-comment"> </span><span class="cm-atom">цепь</span><span class="cm-paren">(</span><span class="cm-number">2</span><span class="cm-paren">,</span>[<span class="cm-atom">добавить</span><span class="cm-paren">,</span><span class="cm-atom">mul</span>]<span class="cm-paren">,</span><span class="cm-variable">Результат</span><span class="cm-paren">)</span><span class="cm-graphic">.</span><span class="cm-comment"> % Результат = 90.</span>
+</code></pre>
+<pre style="display: none;"><code class="language-rust"><span class="cm-keyword">fn</span> <span class="cm-def">add10</span>(<span class="cm-variable">x</span>) { <span class="cm-variable">x</span> <span class="cm-operator">+</span> <span class="cm-number">10</span> }
+<span class="cm-keyword">fn</span> <span class="cm-def">mul30</span>(<span class="cm-variable">x</span>) { <span class="cm-variable">x</span> <span class="cm-operator">*</span> <span class="cm-number">30</span> }
+
+<span class="cm-variable">chain</span>(<span class="cm-number">50</span>, &amp;[&amp;<span class="cm-variable">add10</span>, &amp;<span class="cm-variable">mul30</span>]) <span class="cm-comment">//=&gt; возвращает 1800</span>
