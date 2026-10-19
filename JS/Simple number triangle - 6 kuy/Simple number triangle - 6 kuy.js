@@ -9,5 +9,4 @@ function solve(n) {
     return c;
 }
 
-
 module.exports = solve;
