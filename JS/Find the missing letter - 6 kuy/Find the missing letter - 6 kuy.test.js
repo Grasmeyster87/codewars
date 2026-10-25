@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const findMissingLetter = require('./Find the Nth Catalan number - 6 kuy');
+const findMissingLetter = require('./Find the missing letter - 6 kuy');
 
 describe('KataTests', function () {
     it('exampleTests', function () {
