@@ -1,5 +1,5 @@
 const { assert } = require('chai');
-const multipleOf3Regex = require('./Binary multiple of 3 - 5 kuy');
+const chooseBestSum = require('./Binary multiple of 3 - 5 kuy');
 
 describe('Tests', () => {
     it('Example tests', () => {
